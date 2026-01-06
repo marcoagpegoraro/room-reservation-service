@@ -6,6 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.OffsetDateTime;
 
@@ -24,4 +28,8 @@ public class RoomReservationJpaEntity {
     private String paymentMode;
     private String paymentReference;
     private String reservationStatus;
+    @CreationTimestamp
+    private OffsetDateTime createdAt;
+    @UpdateTimestamp
+    private OffsetDateTime updatedAt;
 }

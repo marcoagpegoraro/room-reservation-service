@@ -2,11 +2,11 @@
 
 This is a microservice that is responsible for processing the requests to confirm the reservation of a room.
 
-It has two entrypoints, a http responsible for confirm the room reservation and a Kafka consumer that consumes the bank transfer update messages.
+It has two entrypoints, an http responsible for confirm the room reservation and a Kafka consumer that consumes the bank transfer update messages.
 
 ## Architecture
 
-The architeture used in this project is highly inspired by the hexagonal archtecture, with all the layers of the application well segregated with each one having its only function.
+The architecture used in this project is highly inspired by the hexagonal architecture, with all the layers of the application well segregated with each one having its only function.
 
 The main folders are as follows:
 
@@ -17,9 +17,9 @@ The main folders are as follows:
 - domain
   - All the classes that are common to all the layers of the applications, such as dto's, exceptions and enums.
 - port
-  - Package that contains all the interfaces that binds together all the layers of the application, no layer can comunicate with another withou a port.
+  - Package that contains all the interfaces that binds together all the layers of the application, no layer can communicate with another without a port.
 - usecases
-  - The business logic of the microservice, each usecase has a long and explicity name explaining what it does.
+  - The business logic of the microservice, each usecase has a long and explicit name explaining what it does.
 
 ## Technologies
 
@@ -40,7 +40,7 @@ This command will run the database, mocked payment service and also the Kafka/Zo
 
 In this project, is also present the postman collection to make http requests to the microservice.
 
-To send Kafka messages, you need to open another terminal and run this command to enter in the kafka container: 
+To send Kafka messages, you need to open another terminal and run this command to enter in the Kafka container: 
 
 ```docker compose exec kafka bash```
 
@@ -82,6 +82,27 @@ Here are a few screenshots showing the microservice working as intended.
 ### The rows in the database
 ![database_rows.png](screenshots/database_rows.png)
 
+### Kafka event being consumed (Reservation ID number 4)
+![kafka_message_consumed.png](screenshots/kafka_message_consumed.png)
+
+### The row in the database with the correct reservation status value
+![bank_transfer_success.png](screenshots/bank_transfer_success.png)
+
+### SQL Cron job to cancel all the pending reservations
+```sql
+SELECT cron.schedule(
+               'cancel-pending-bank-transfer-reservations',
+               '0 0 * * *',
+               $$
+    UPDATE room_reservation
+    SET reservation_status = 'CANCELLED'
+    WHERE payment_method = 'BANK_TRANSFER'
+    AND payment_status = 'PENDING_PAYMENT'
+    AND start_date = CURRENT_DATE + INTERVAL '2 days';
+    $$
+);
+```
+
 ## Things that I wish I had done
 
 - In the Kafka consumer, it would be great to have a custom deserializer, removing the necessity of consuming an string and then convert it to a Java DTO.
@@ -89,6 +110,7 @@ Here are a few screenshots showing the microservice working as intended.
 - Insert the bank transfer payment update variables in the reservation table, but I end up only treating the Kafka event as a success in the payment.
 - Create a custom error handler for all the exceptions, making all of the the HTTP error messages friendly for the client calling the application. 
 - Not use the automatic JPA table migration and create the table manually. 
+- Instead of using a cron job in the database to check everyday if there are pending bank payment reservations, use another topic with a TTL of two days. 
 
 ## Conclusion
 It was a very fun and demanding assigment to do, I could put in practice all the knowledge that I've been learning and applying through my career as a software engineer.
