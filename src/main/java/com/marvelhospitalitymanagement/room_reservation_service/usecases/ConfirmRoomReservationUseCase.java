@@ -22,7 +22,7 @@ public class ConfirmRoomReservationUseCase implements ConfirmRoomReservationPort
     public RoomReservationExecuted execute(RoomReservationConfirmCommand command) {
         validators.forEach(validator -> validator.validate(command));
 
-        PaymentStrategy paymentStrategy = paymentFactory.get(command.paymentModeEnum().getPaymentMode());
+        PaymentStrategy paymentStrategy = paymentFactory.get(command.paymentMode().getPaymentMode());
         paymentStrategy.execute(command);
         return null;
     }
