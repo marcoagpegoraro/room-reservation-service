@@ -6,6 +6,7 @@ import com.marvelhospitalitymanagement.room_reservation_service.domain.constant.
 import com.marvelhospitalitymanagement.room_reservation_service.domain.enums.PaymentStatusEnum;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.enums.ReservationStatusEnum;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.InvalidPaymentException;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.PaymentNotConfirmedException;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.model.PaymentDetails;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationExecuted;
 import com.marvelhospitalitymanagement.room_reservation_service.port.out.PaymentServicePort;
@@ -32,6 +33,6 @@ public class PaymentCreditCardStrategy implements PaymentStrategy {
             return new RoomReservationExecuted(roomReservationDto.id(), reservationStatus);
         }
 
-        throw new InvalidPaymentException("Invalid payment");
+        throw new PaymentNotConfirmedException("The credit card payment was not confirmed.");
     }
 }

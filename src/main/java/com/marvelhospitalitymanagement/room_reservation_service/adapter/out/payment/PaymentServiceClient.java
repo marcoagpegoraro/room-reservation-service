@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(name = "payment-service-client")
 public interface PaymentServiceClient {
 
-    @RequestMapping("/credit-card-payment-api")
+    @RequestMapping("/payment-status")
     ResponseEntity<PaymentServiceResponse> getPaymentDetails(@RequestBody PaymentServiceRequest request);
 }

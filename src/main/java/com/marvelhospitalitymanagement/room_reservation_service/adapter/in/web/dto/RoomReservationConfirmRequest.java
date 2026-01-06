@@ -13,6 +13,6 @@ public record RoomReservationConfirmRequest (
         @NotNull OffsetDateTime reservationEndDate,
         @NotNull RoomSegmentEnum roomSegment,
         @NotNull PaymentModeEnum paymentMode,
-        @NotNull String paymentReference
+        String paymentReference
 ){
 }

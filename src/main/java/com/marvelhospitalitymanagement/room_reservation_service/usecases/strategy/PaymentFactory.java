@@ -1,6 +1,7 @@
 package com.marvelhospitalitymanagement.room_reservation_service.usecases.strategy;
 
 import com.marvelhospitalitymanagement.room_reservation_service.domain.constant.PaymentType;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.InvalidPaymentException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class PaymentFactory {
     public PaymentStrategy get(String fileType) {
         final var paymentStrategy = paymentStrategies.get(fileType);
         if (Objects.isNull(paymentStrategy)) {
-            throw new IllegalArgumentException("Unsupported payment strategy");
+            throw new InvalidPaymentException("Unsupported payment strategy");
         }
         return paymentStrategy;
     }

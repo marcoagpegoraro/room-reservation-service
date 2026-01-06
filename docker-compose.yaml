@@ -9,3 +9,10 @@ services:
       POSTGRES_PASSWORD: 123
     ports:
       - "5432:5432"
+
+  credit-card-payment-api:
+    build: payment-service
+    container_name: credit-card-payment-api
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
