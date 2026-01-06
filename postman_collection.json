@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "115cda2e-f2c7-494d-a29c-29c36c9553f8",
+		"name": "Room Reservation Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "51266363",
+		"_collection_link": "https://marcoagpegoraro-314530.postman.co/workspace/Marco-Pegoraro's-Workspace~9e001c74-ef1c-426f-8f56-0a58e00fc827/collection/51266363-115cda2e-f2c7-494d-a29c-29c36c9553f8?action=share&source=collection_link&creator=51266363"
+	},
+	"item": [
+		{
+			"name": "Post Reservation Cash",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerName\": \"Marco\",\n    \"roomNumber\": \"90\",\n    \"reservationStartDate\": \"2026-01-05T21:25:00+01:00\",\n    \"reservationEndDate\": \"2026-01-10T21:25:00+01:00\",\n    \"roomSegment\": \"MEDIUM\",\n    \"paymentMode\": \"CASH\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/room-reservation/confirm"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Reservation Credit Card (Reference OK)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerName\": \"Marco\",\n    \"roomNumber\": \"90\",\n    \"reservationStartDate\": \"2026-01-05T21:25:00+01:00\",\n    \"reservationEndDate\": \"2026-01-10T21:25:00+01:00\",\n    \"roomSegment\": \"MEDIUM\",\n    \"paymentMode\": \"CASH\",\n    \"paymentReference\": \"Reference\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/room-reservation/confirm"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Reservation Credit Card (Reference NOT OK)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerName\": \"Marco\",\n    \"roomNumber\": \"90\",\n    \"reservationStartDate\": \"2026-01-05T21:25:00+01:00\",\n    \"reservationEndDate\": \"2026-01-10T21:25:00+01:00\",\n    \"roomSegment\": \"MEDIUM\",\n    \"paymentMode\": \"CASH\",\n    \"paymentReference\": \"DL987654321\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/room-reservation/confirm"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Reservation Bank Transfer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerName\": \"Marco\",\n    \"roomNumber\": \"90\",\n    \"reservationStartDate\": \"2026-01-05T21:25:00+01:00\",\n    \"reservationEndDate\": \"2026-01-10T21:25:00+01:00\",\n    \"roomSegment\": \"MEDIUM\",\n    \"paymentMode\": \"BANK_TRANSFER\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/room-reservation/confirm"
+			},
+			"response": []
+		},
+		{
+			"name": "Validation Error",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerName\": \"Marco\",\n    \"roomNumber\": \"90\",\n    \"reservationStartDate\": \"2026-01-05T21:25:00+01:00\",\n    \"reservationEndDate\": \"2026-02-10T21:25:00+01:00\",\n    \"roomSegment\": \"MEDIUM\",\n   \"paymentMode\": \"CASH\",\n    \"paymentReference\": \"Reference\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/room-reservation/confirm"
+			},
+			"response": []
+		},
+		{
+			"name": "Payment API OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paymentReference\": \"DL123456789\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http//localhost:9090/host/credit-card-payment-api/payment-status"
+			},
+			"response": []
+		},
+		{
+			"name": "Payment API NOT OK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paymentReference\": \"DL123456789\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http//localhost:9090/host/credit-card-payment-api/payment-status"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

@@ -31,6 +31,35 @@ The main folders are as follows:
 - Open feign for http requests
 - Node.js to mock the payment service endpoint
 
+## Running the application
+To run the application, you will need to have Docker installed in your machine, with Docker installed, run the following command:
+
+```docker compose up -d```
+
+This command will run the database, mocked payment service and also the Kafka/Zookeeper.
+
+In this project, is also present the postman collection to make http requests to the microservice.
+
+To send Kafka messages, you need to open another terminal and run this command to enter in the kafka container: 
+
+```docker compose exec kafka bash```
+
+Now inside the command, check if the topic existis with the command:
+
+```kafka-topics --bootstrap-server kafka:9092 --list```
+
+If it has not been created yet, you can create it with the command: 
+
+```kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic bank-transfer-payment-update --partitions 1 --replication-factor 1```
+
+With the topic created, run the following command to send messages to the topic: 
+
+```kafka-console-producer   --bootstrap-server localhost:9092   --topic bank-transfer-payment-update```
+
+And them a '>' will appear, indicating that now you can send a message to the topic: 
+
+```{ "paymentId": "123456", "debtorAccountnumber": "123123", "amountReceived": 1000, "transactionDescription": "1401541457 00000003" }```
+
 ## The microservice in action
 
 Here are a few screenshots showing the microservice working as intended.
@@ -59,6 +88,7 @@ Here are a few screenshots showing the microservice working as intended.
 - Refine all the classes names and standardize all of them to be equal through the application.
 - Insert the bank transfer payment update variables in the reservation table, but I end up only treating the Kafka event as a success in the payment.
 - Create a custom error handler for all the exceptions, making all of the the HTTP error messages friendly for the client calling the application. 
+- Not use the automatic JPA table migration and create the table manually. 
 
 ## Conclusion
-It was a very fun and demanding assigment to do, I could put in practice all the knoledge that I've been learning and applying through my career as a software engineer.
+It was a very fun and demanding assigment to do, I could put in practice all the knowledge that I've been learning and applying through my career as a software engineer.
