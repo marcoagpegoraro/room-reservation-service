@@ -108,9 +108,10 @@ SELECT cron.schedule(
 - In the Kafka consumer, it would be great to have a custom deserializer, removing the necessity of consuming an string and then convert it to a Java DTO.
 - Refine all the classes names and standardize all of them to be equal through the application.
 - Insert the bank transfer payment update variables in the reservation table, but I end up only treating the Kafka event as a success in the payment.
-- Create a custom error handler for all the exceptions, making all of the the HTTP error messages friendly for the client calling the application. 
+- Create a custom error handler for all the exceptions, making all the  HTTP error messages friendly for the client calling the application. 
 - Not use the automatic JPA table migration and create the table manually. 
-- Instead of using a cron job in the database to check everyday if there are pending bank payment reservations, use another topic with a TTL of two days. 
+- Instead of using a cron job in the database to check every day if there are pending bank payment reservations, use another topic with a TTL of two days. 
+- The unit tests of the project, at least to get a 90% of code coverage. There is also a window for mutation tests, to test the days validator.
 
 ## Conclusion
 It was a very fun and demanding assigment to do, I could put in practice all the knowledge that I've been learning and applying through my career as a software engineer.
