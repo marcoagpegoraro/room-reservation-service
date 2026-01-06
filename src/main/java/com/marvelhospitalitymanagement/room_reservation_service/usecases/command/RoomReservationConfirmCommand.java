@@ -10,8 +10,8 @@ public record RoomReservationConfirmCommand (
         Integer roomNumber,
         OffsetDateTime reservationStartDate,
         OffsetDateTime reservationEndDate,
-        RoomSegmentEnum roomSegmentEnum,
-        PaymentModeEnum paymentModeEnum,
+        RoomSegmentEnum roomSegment,
+        PaymentModeEnum paymentMode,
         String paymentReference
 ){
 }
