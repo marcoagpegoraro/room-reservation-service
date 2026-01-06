@@ -1,0 +1,11 @@
+services:
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: marveldb
+      POSTGRES_USER: marveldbuser
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
