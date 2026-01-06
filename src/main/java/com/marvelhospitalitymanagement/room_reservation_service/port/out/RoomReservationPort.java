@@ -7,4 +7,5 @@ import com.marvelhospitalitymanagement.room_reservation_service.usecases.command
 public interface RoomReservationPort {
 
     RoomReservationDto saveReservation(RoomReservationConfirmCommand command, String reservationStatus);
+    void updateReservationPaymentStatus(Long reservationId, String reservationStatus);
 }

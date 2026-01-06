@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.time.OffsetDateTime;
 
-@Entity
+@Entity(name = "room_reservation")
 @Getter
 @Setter
 public class RoomReservationJpaEntity {

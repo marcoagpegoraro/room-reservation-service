@@ -9,8 +9,6 @@ import com.marvelhospitalitymanagement.room_reservation_service.usecases.command
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service(PaymentType.BANK_TRANSFER)
 @RequiredArgsConstructor
 public class PaymentBankTransferStrategy implements PaymentStrategy {
