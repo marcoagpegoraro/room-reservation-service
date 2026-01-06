@@ -40,6 +40,6 @@ app.post('/host/credit-card-payment-api/payment-status', (req, res) => {
 
 });
 
-app.listen(PORT, () => {
+app.listen(SERVER_PORT, () => {
     console.log(`Credit card payment API running at port ${SERVER_PORT}`);
 });
