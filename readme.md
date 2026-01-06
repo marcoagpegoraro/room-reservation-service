@@ -111,7 +111,7 @@ SELECT cron.schedule(
 - Create a custom error handler for all the exceptions, making all the  HTTP error messages friendly for the client calling the application. 
 - Not use the automatic JPA table migration and create the table manually. 
 - Instead of using a cron job in the database to check every day if there are pending bank payment reservations, use another topic with a TTL of two days. 
-- The unit tests of the project, at least to get a 90% of code coverage. There is also a window for mutation tests, to test the days validator.
+- Create more unit tests for the project, at least to get a 90% of code coverage. There is also a window for mutation tests, to test the days' validator.
 
 ## Conclusion
 It was a very fun and demanding assigment to do, I could put in practice all the knowledge that I've been learning and applying through my career as a software engineer.
