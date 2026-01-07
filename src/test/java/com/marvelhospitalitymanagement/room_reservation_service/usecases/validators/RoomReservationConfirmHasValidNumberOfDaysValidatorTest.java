@@ -3,7 +3,7 @@ package com.marvelhospitalitymanagement.room_reservation_service.usecases.valida
 import com.marvelhospitalitymanagement.room_reservation_service.domain.enums.PaymentModeEnum;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.enums.RoomSegmentEnum;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.InvalidRoomConfirmationException;
-import com.marvelhospitalitymanagement.room_reservation_service.usecases.command.RoomReservationConfirmCommand;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationConfirmCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

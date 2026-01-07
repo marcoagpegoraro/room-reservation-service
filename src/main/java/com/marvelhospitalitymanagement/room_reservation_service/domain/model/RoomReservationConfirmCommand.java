@@ -1,4 +1,4 @@
-package com.marvelhospitalitymanagement.room_reservation_service.usecases.command;
+package com.marvelhospitalitymanagement.room_reservation_service.domain.model;
 
 import com.marvelhospitalitymanagement.room_reservation_service.domain.enums.PaymentModeEnum;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.enums.RoomSegmentEnum;

@@ -1,7 +1,7 @@
 package com.marvelhospitalitymanagement.room_reservation_service.port.out;
 
 import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationSaved;
-import com.marvelhospitalitymanagement.room_reservation_service.usecases.command.RoomReservationConfirmCommand;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationConfirmCommand;
 
 public interface RoomReservationPort {
 

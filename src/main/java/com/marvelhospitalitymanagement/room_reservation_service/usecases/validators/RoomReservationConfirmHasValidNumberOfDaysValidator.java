@@ -1,7 +1,7 @@
 package com.marvelhospitalitymanagement.room_reservation_service.usecases.validators;
 
 import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.InvalidRoomConfirmationException;
-import com.marvelhospitalitymanagement.room_reservation_service.usecases.command.RoomReservationConfirmCommand;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationConfirmCommand;
 import org.springframework.stereotype.Component;
 
 import java.time.temporal.ChronoUnit;

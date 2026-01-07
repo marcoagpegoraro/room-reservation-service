@@ -2,7 +2,7 @@ package com.marvelhospitalitymanagement.room_reservation_service.adapter.out.res
 
 import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation.RoomReservationJpaEntity;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationSaved;
-import com.marvelhospitalitymanagement.room_reservation_service.usecases.command.RoomReservationConfirmCommand;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationConfirmCommand;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

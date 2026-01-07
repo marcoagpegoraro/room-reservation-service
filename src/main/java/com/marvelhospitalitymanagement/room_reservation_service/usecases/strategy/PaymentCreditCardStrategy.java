@@ -9,7 +9,7 @@ import com.marvelhospitalitymanagement.room_reservation_service.domain.model.Pay
 import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationExecuted;
 import com.marvelhospitalitymanagement.room_reservation_service.port.out.PaymentServicePort;
 import com.marvelhospitalitymanagement.room_reservation_service.port.out.RoomReservationPort;
-import com.marvelhospitalitymanagement.room_reservation_service.usecases.command.RoomReservationConfirmCommand;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationConfirmCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
