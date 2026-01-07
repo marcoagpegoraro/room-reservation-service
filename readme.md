@@ -79,6 +79,9 @@ Here are a few screenshots showing the microservice working as intended.
 ### Validation error because the reservation days is more than 30
 ![validation_error.png](screenshots/validation_error.png)
 
+### Validation error because two of the required fields are null
+![required_field_null.png](screenshots/required_field_null.png)
+
 ### The rows in the database
 ![database_rows.png](screenshots/database_rows.png)
 
@@ -106,9 +109,7 @@ SELECT cron.schedule(
 ## Things that I wish I had done
 
 - In the Kafka consumer, it would be great to have a custom deserializer, removing the necessity of consuming an string and then convert it to a Java DTO.
-- Refine all the classes names and standardize all of them to be equal through the application.
 - Insert the bank transfer payment update variables in the reservation table, but I end up only treating the Kafka event as a success in the payment.
-- Create a custom error handler for all the exceptions, making all the  HTTP error messages friendly for the client calling the application. 
 - Not use the automatic JPA table migration and create the table manually. 
 - Instead of using a cron job in the database to check every day if there are pending bank payment reservations, use another topic with a TTL of two days. 
 - Create more unit tests for the project, at least to get a 90% of code coverage. There is also a window for mutation tests, to test the days' validator.

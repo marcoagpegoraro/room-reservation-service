@@ -33,6 +33,6 @@ public class PaymentCreditCardStrategy implements PaymentStrategy {
             return new RoomReservationExecuted(roomReservationDto.id(), reservationStatus);
         }
 
-        throw new PaymentNotConfirmedException("The credit card payment was not confirmed.");
+        throw new PaymentNotConfirmedException("The credit card payment is not confirmed.");
     }
 }
