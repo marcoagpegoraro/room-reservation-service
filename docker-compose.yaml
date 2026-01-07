@@ -37,19 +37,4 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
-
-  kafka-init:
-    image: confluentinc/cp-kafka:7.5.0
-    depends_on:
-      - kafka
-    entrypoint: [ "/bin/sh", "-c" ]
-    command: |
-      echo "Waiting for Kafka..."
-      sleep 10
-      kafka-topics --bootstrap-server kafka:9092 \
-        --create --if-not-exists \
-        --topic bank-transfer-payment-update \
-        --partitions 1 \
-        --replication-factor 1
-      kafka-topics --bootstrap-server kafka:9092 --list
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true" # Since this is a deveoper only docker-compose file, this flag is set to true to automatically create the topic when the app is running
