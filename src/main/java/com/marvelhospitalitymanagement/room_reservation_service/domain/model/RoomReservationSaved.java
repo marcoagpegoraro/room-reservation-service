@@ -1,8 +1,8 @@
-package com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation.dto;
+package com.marvelhospitalitymanagement.room_reservation_service.domain.model;
 
 import java.time.OffsetDateTime;
 
-public record RoomReservationDto (
+public record RoomReservationSaved(
         Long id,
         String roomNumber,
         OffsetDateTime reservationStartDate,

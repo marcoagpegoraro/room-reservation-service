@@ -1,6 +1,6 @@
 package com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation;
 
-import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation.dto.RoomReservationDto;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationSaved;
 import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation.mapper.RoomReservationMapper;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.ReservationNotFoundException;
 import com.marvelhospitalitymanagement.room_reservation_service.usecases.command.RoomReservationConfirmCommand;
@@ -38,7 +38,7 @@ class RoomReservationAdapterTest {
 
         RoomReservationJpaEntity jpaEntity = new RoomReservationJpaEntity();
         RoomReservationJpaEntity savedJpaEntity = new RoomReservationJpaEntity();
-        RoomReservationDto expectedDto = new RoomReservationDto(1L, "", OffsetDateTime.now(), OffsetDateTime.now(), "", "", "", "", "");
+        RoomReservationSaved expectedDto = new RoomReservationSaved(1L, "", OffsetDateTime.now(), OffsetDateTime.now(), "", "", "", "", "");
 
         when(roomReservationMapper.commandToJpa(command, reservationStatus))
                 .thenReturn(jpaEntity);
@@ -48,7 +48,7 @@ class RoomReservationAdapterTest {
                 .thenReturn(expectedDto);
 
         // WHEN
-        RoomReservationDto result =
+        RoomReservationSaved result =
                 roomReservationAdapter.saveReservation(command, reservationStatus);
 
         // THEN

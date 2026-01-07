@@ -1,19 +1,11 @@
 package com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation;
 
-import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.payment.PaymentServiceClient;
-import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.payment.dto.PaymentServiceRequest;
-import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.payment.dto.PaymentServiceResponse;
-import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.payment.mapper.PaymentDetailsMapper;
-import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation.dto.RoomReservationDto;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationSaved;
 import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation.mapper.RoomReservationMapper;
-import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.IntegrationException;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.exceptions.ReservationNotFoundException;
-import com.marvelhospitalitymanagement.room_reservation_service.domain.model.PaymentDetails;
-import com.marvelhospitalitymanagement.room_reservation_service.port.out.PaymentServicePort;
 import com.marvelhospitalitymanagement.room_reservation_service.port.out.RoomReservationPort;
 import com.marvelhospitalitymanagement.room_reservation_service.usecases.command.RoomReservationConfirmCommand;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -25,7 +17,7 @@ public class RoomReservationAdapter implements RoomReservationPort {
     private final RoomReservationJpaRepository roomReservationJpaRepository;
     private final RoomReservationMapper roomReservationMapper;
 
-    public RoomReservationDto saveReservation(RoomReservationConfirmCommand command, String reservationStatus){
+    public RoomReservationSaved saveReservation(RoomReservationConfirmCommand command, String reservationStatus){
         RoomReservationJpaEntity roomReservationJpaEntity = roomReservationMapper.commandToJpa(command, reservationStatus);
         RoomReservationJpaEntity savedRoomReservationEntity = roomReservationJpaRepository.save(roomReservationJpaEntity);
         return roomReservationMapper.jpaToDto(savedRoomReservationEntity);

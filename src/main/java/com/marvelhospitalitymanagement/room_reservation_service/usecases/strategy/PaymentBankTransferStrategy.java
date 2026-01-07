@@ -1,6 +1,6 @@
 package com.marvelhospitalitymanagement.room_reservation_service.usecases.strategy;
 
-import com.marvelhospitalitymanagement.room_reservation_service.adapter.out.reservation.dto.RoomReservationDto;
+import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationSaved;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.constant.PaymentType;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.enums.ReservationStatusEnum;
 import com.marvelhospitalitymanagement.room_reservation_service.domain.model.RoomReservationExecuted;
@@ -16,7 +16,7 @@ public class PaymentBankTransferStrategy implements PaymentStrategy {
 
     public RoomReservationExecuted execute(RoomReservationConfirmCommand command){
         final var reservationStatus = ReservationStatusEnum.PENDING_PAYMENT.getReservationStatus();
-        RoomReservationDto roomReservationDto = roomReservationPort.saveReservation(command, reservationStatus);
-        return new RoomReservationExecuted(roomReservationDto.id(), reservationStatus);
+        RoomReservationSaved roomReservationSaved = roomReservationPort.saveReservation(command, reservationStatus);
+        return new RoomReservationExecuted(roomReservationSaved.id(), reservationStatus);
     }
 }
